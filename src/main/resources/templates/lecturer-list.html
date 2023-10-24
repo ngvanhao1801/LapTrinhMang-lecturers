@@ -50,6 +50,7 @@
             <th scope="col">Họ Và Tên</th>
             <th scope="col">Tên Bộ Môn</th>
             <th scope="col">Hệ Số Lương</th>
+            <th scope="col">Tình trạng</th>
             <th scope="col">Chức Năng</th>
         </tr>
         </thead>
@@ -59,6 +60,7 @@
             <td th:text="${l.hoTen}"></td>
             <td th:text="${l.tenBoMon}"></td>
             <td th:text="${l.heSoLuong}"></td>
+            <td th:text="${l.tinhTrang}"></td>
             <td>
                 <a class="btn btn-secondary btn-sm" th:href="@{/mylist/{id}(id=${l.id})}">Add To MyLecturer</a>
                 <a style="color:blue" th:href="@{/editLecturer/{id}(id=${l.id})}">

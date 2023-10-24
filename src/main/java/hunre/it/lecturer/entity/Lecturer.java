@@ -28,4 +28,6 @@ public class Lecturer {
 
   private int heSoLuong;
 
+  private String tinhTrang;
+
 }

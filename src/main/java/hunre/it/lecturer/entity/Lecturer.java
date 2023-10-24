@@ -17,7 +17,7 @@ import lombok.Setter;
 public class Lecturer {
 
   @Id
-  @GeneratedValue(strategy= GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
   private String maGv;

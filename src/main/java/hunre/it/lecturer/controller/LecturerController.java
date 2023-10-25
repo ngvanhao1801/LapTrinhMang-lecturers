@@ -59,21 +59,21 @@ public class LecturerController {
     return "redirect:/available_lecturers";
   }
 
-  @GetMapping("/my_lecturers")
-  public String getMyLecturers(Model model) {
-    List<MyLecturerList> list = myLecturerListService.getAllMyLecturers();
-    model.addAttribute("lecturer", list);
-    return "my-lecturer";
-  }
+//  @GetMapping("/my_lecturers")
+//  public String getMyLecturers(Model model) {
+//    List<MyLecturerList> list = myLecturerListService.getAllMyLecturers();
+//    model.addAttribute("lecturer", list);
+//    return "my-lecturer";
+//  }
 
-  @RequestMapping("/mylist/{id}")
-  public String getMyList(@PathVariable("id") int id) {
-    Lecturer l = service.getLecturerById(id);
-    MyLecturerList ml = new
-        MyLecturerList(l.getId(), l.getMaGv(), l.getHoTen(), l.getTenBoMon(), l.getHeSoLuong());
-    myLecturerListService.saveMyLecturers(ml);
-    return "redirect:/my_lecturers";
-  }
+//  @RequestMapping("/mylist/{id}")
+//  public String getMyList(@PathVariable("id") int id) {
+//    Lecturer l = service.getLecturerById(id);
+//    MyLecturerList ml = new
+//        MyLecturerList(l.getId(), l.getMaGv(), l.getHoTen(), l.getTenBoMon(), l.getHeSoLuong());
+//    myLecturerListService.saveMyLecturers(ml);
+//    return "redirect:/my_lecturers";
+//  }
 
   @RequestMapping("/editLecturer/{id}")
   public String editLecturer(@PathVariable("id") int id, Model model) {

@@ -18,12 +18,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active text-white" aria-current="page" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="available_lecturers">Available Lecturers</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="my_lecturers">My Lecturers</a></li>
+                <li class="nav-item"><a class="nav-link active text-white" aria-current="page" href="/">Trang chủ</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="available_lecturers">Danh sách giảng viên</a></li>
             </ul>
             <div>
-                <a class="nav-link text-white" href="lecturer_register">New Lecturer Register</a>
+                <a class="nav-link text-white" href="lecturer_register">Thêm mới giảng viên</a>
             </div>
         </div>
     </div>
@@ -49,7 +48,8 @@
                 <a style="color:blue" th:href="@{/editLecturer/{id}(id=${l.id})}">
                     <i class="fa-solid fa-pen-to-square ms-4"></i>
                 </a>
-                <a style="color: red" th:href="@{/deleteMyList/{id}(id=${l.id})}">
+                <a style="color: red" th:href="@{/deleteMyList/{id}(id=${l.id})}"
+                   onclick="if (!(confirm('Bạn có chắc chắn muốn xóa thông tin giảng viên này?'))) return false">
                     <i class="fa-solid fa-trash-can ms-4"></i>
                 </a>
             </td>

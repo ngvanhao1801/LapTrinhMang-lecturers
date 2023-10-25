@@ -16,19 +16,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active text-white" aria-current="page" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="available_lecturers">Available Lecturers</a>
-                </li>
-                <li class="nav-item"><a class="nav-link text-white" href="my_lecturers">My Lecturers</a></li>
+                <li class="nav-item"><a class="nav-link active text-white" aria-current="page" href="/">Trang chủ</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="available_lecturers">Danh sách giảng viên</a></li>
             </ul>
             <div>
-                <a class="nav-link text-white" href="lecturer_register">New Lecturer Register</a>
+                <a class="nav-link text-white" href="lecturer_register">Thêm mới giảng viên</a>
             </div>
         </div>
     </div>
 </nav>
 <div class="container my-5 p-5" style="border:1px solid black;">
-    <h4 class="text-center">New Lecturer Register</h4>
+    <h4 class="text-center">Đăng ký giảng viên mới</h4>
     <form class="col-md-4 offset-md-4" th:action="@{/save}" method="POST">
         <div class="mb-3">
             <label for="maGv" class="form-label">Mã Giảng Viên </label>

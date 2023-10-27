@@ -5,6 +5,8 @@ import hunre.it.lecturer.repository.LecturerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -18,6 +20,20 @@ public class LecturerService {
 	}
 
 	public List<Lecturer> getAllLecturer() {
+//		List<Lecturer> list = lRepo.findAll();
+//
+//		Collections.sort(list, Comparator.comparing(Lecturer::getHeSoLuong));
+//
+//		// Bổ sung cột tình trạng
+//		for (Lecturer lecturer : list) {
+//			if (lecturer.getHeSoLuong() >= 5) {
+//				lecturer.setTinhTrang("Cao");
+//			} else if (lecturer.getHeSoLuong() >= 3 && lecturer.getHeSoLuong() < 5) {
+//				lecturer.setTinhTrang("Trung Bình");
+//			} else {
+//				lecturer.setTinhTrang("Thấp");
+//			}
+//		}
 		return lRepo.findAll();
 	}
 

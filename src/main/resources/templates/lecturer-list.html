@@ -56,7 +56,8 @@
             <td th:text="${l.hoTen}"></td>
             <td th:text="${l.tenBoMon}"></td>
             <td th:text="${l.heSoLuong}"></td>
-            <td th:text="${l.tinhTrang}"></td>
+            <td th:text="${l.heSoLuong >= 5 ? 'Cao' : (3 <= l.heSoLuong && l.heSoLuong<5 ? 'Trung bình' : 'Thấp')}"></td>
+<!--            <td th:text="${l.tinhTrang}"></td>-->
             <td>
                 <a style="color:blue" th:href="@{/editLecturer/{id}(id=${l.id})}">
                     <i class="fa-solid fa-pen-to-square ms-4"></i>

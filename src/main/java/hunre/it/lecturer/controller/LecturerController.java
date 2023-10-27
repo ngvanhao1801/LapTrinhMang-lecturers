@@ -8,8 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -31,19 +29,6 @@ public class LecturerController {
   @GetMapping("/available_lecturers")
   public ModelAndView getAllLecturer() {
     List<Lecturer> list = service.getAllLecturer();
-
-    Collections.sort(list, Comparator.comparing(Lecturer::getHeSoLuong));
-
-    // Bổ sung cột tình trạng
-    for (Lecturer lecturer : list) {
-      if (lecturer.getHeSoLuong() >= 5) {
-        lecturer.setTinhTrang("Cao");
-      } else if (lecturer.getHeSoLuong() >= 3 && lecturer.getHeSoLuong() < 5) {
-        lecturer.setTinhTrang("Trung Bình");
-      } else {
-        lecturer.setTinhTrang("Thấp");
-      }
-    }
 
     return new ModelAndView("lecturer-list", "lecturer", list);
   }

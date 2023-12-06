@@ -1,8 +1,6 @@
 package hunre.it.lecturer.entity;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -28,7 +26,5 @@ public class Lecturer {
 
   @NotNull
   private int heSoLuong;
-
-  private String tinhTrang;
 
 }

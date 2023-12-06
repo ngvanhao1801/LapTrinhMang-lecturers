@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="https://www.thymeleaf.com">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,9 +32,9 @@
 <br>
 <form action="search" method="GET">
     <p style = "text-align: center;" >
-        <input type="text" name="tenBoMon" placeholder="Nhập tên bộ môn"/>
-        <input type="text" name="heSoLuong" placeholder="Nhập hệ số lương"/>
-        <input style="background-color: rgba(255,153,0,0.35)" type="submit" value="Search" class="add-button" />
+        <input type="text" name="tenBoMon" placeholder="Nhập tên bộ môn" required/>
+        <input type="number" name="heSoLuong" placeholder="Nhập hệ số lương" required/>
+        <button style="background-color: rgba(255,153,0,0.35); border-radius: 10px; width: 100px;" type="submit" class="add-button" >Search</button>
     </p>
 </form>
 
@@ -57,12 +57,11 @@
             <td th:text="${l.tenBoMon}"></td>
             <td th:text="${l.heSoLuong}"></td>
             <td th:text="${l.heSoLuong >= 5 ? 'Cao' : (3 <= l.heSoLuong && l.heSoLuong<5 ? 'Trung bình' : 'Thấp')}"></td>
-<!--            <td th:text="${l.tinhTrang}"></td>-->
             <td>
-                <a style="color:blue" th:href="@{/editLecturer/{id}(id=${l.id})}">
+                <a style="color:blue" th:href="@{/editLecturer/{maGv}(maGv=${l.maGv})}">
                     <i class="fa-solid fa-pen-to-square ms-4"></i>
                 </a>
-                <a style="color:red" th:href="@{/deleteLecturer/{id}(id=${l.id})}"
+                <a style="color:red" th:href="@{/deleteLecturer/{maGv}(maGv=${l.maGv})}"
                    onclick="if (!(confirm('Bạn có chắc chắn muốn xóa thông tin giảng viên này?'))) return false">
                     <i class="fa-solid fa-trash-can ms-4"></i>
                 </a>

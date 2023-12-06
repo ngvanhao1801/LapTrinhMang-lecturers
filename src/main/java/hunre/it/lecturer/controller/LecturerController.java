@@ -16,13 +16,19 @@ public class LecturerController {
   @Autowired
   private LecturerService service;
 
+  private boolean isEdit = false;
+
+  private String errorMessage = "";
+
   @GetMapping("/")
   public String home() {
     return "home";
   }
 
   @GetMapping("/lecturer_register")
-  public String lecturerRegister() {
+  public String lecturerRegister(Model model) {
+    model.addAttribute("errorMessage", errorMessage);
+
     return "lecturer-register";
   }
 
@@ -33,32 +39,45 @@ public class LecturerController {
     return new ModelAndView("lecturer-list", "lecturer", list);
   }
 
-  @PostMapping("/save")
-  public String addLecturer(@ModelAttribute Lecturer l) {
-    service.save(l);
-    return "redirect:/available_lecturers";
-  }
+  @RequestMapping("/editLecturer/{maGv}")
+  public String editLecturer(@PathVariable("maGv") int maGv, Model model) {
+    Lecturer lecturer = service.getLecturerById(maGv);
+    model.addAttribute("lecturer", lecturer);
 
-  @RequestMapping("/editLecturer/{id}")
-  public String editLecturer(@PathVariable("id") int id, Model model) {
-    Lecturer l = service.getLecturerById(id);
-    model.addAttribute("lecturer", l);
+    isEdit = true;
+
     return "lecturer-edit";
   }
 
-  @RequestMapping("/deleteLecturer/{id}")
-  public String deleteLecturer(@PathVariable("id") int id) {
-    service.deleteById(id);
+  @RequestMapping("/deleteLecturer/{maGv}")
+  public String deleteLecturer(@PathVariable("maGv") int maGv) {
+    service.deleteByMaGv(maGv);
+
     return "redirect:/available_lecturers";
   }
 
   @GetMapping("/search")
   public String searchLecturer(@RequestParam("tenBoMon") String tenBoMon,
                                @RequestParam("heSoLuong") int heSoLuong,
-                               Model theModel) {
+                               Model model) {
     List<Lecturer> lecturers = service.searchLecturer(tenBoMon, heSoLuong);
-    theModel.addAttribute("lecturer", lecturers);
+    model.addAttribute("lecturer", lecturers);
+
     return "search-lecturer";
+  }
+
+  @PostMapping("/save")
+  public String addLecturer(@ModelAttribute Lecturer lecturer, Model model) {
+    errorMessage = "";
+    if (!isEdit && service.existsById(lecturer.getMaGv())) {
+      isEdit = false;
+      errorMessage = "Đã tồn tại id = " + lecturer.getMaGv();
+      model.addAttribute("lecturer", lecturer);
+      return "redirect:/lecturer_register";
+    }
+
+    service.save(lecturer);
+    return "redirect:/available_lecturers";
   }
 
 }

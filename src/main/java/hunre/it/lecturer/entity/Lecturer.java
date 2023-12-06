@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,15 +18,15 @@ import lombok.Setter;
 public class Lecturer {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+  private int maGv;
 
-  private String maGv;
-
+  @NotNull
   private String hoTen;
 
+  @NotNull
   private String tenBoMon;
 
+  @NotNull
   private int heSoLuong;
 
   private String tinhTrang;

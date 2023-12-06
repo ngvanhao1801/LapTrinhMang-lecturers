@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="https://www.thymeleaf.com">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,8 +16,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active text-white" aria-current="page" href="/">Trang chủ</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="available_lecturers">Danh sách giảng viên</a></li>
+                <li class="nav-item"><a class="nav-link active text-white" aria-current="page" href="/">Trang chủ</a>
+                </li>
+                <li class="nav-item"><a class="nav-link text-white" href="available_lecturers">Danh sách giảng viên</a>
+                </li>
             </ul>
             <div>
                 <a class="nav-link text-white" href="lecturer_register">Thêm mới giảng viên</a>
@@ -27,22 +29,24 @@
 </nav>
 <div class="container my-5 p-5" style="border:1px solid black;">
     <h4 class="text-center">Đăng ký giảng viên mới</h4>
-    <form class="col-md-4 offset-md-4" th:action="@{/save}" method="POST">
+    <form class="col-md-4 offset-md-4" th:action="@{/save}" method="POST" th:object="${lecturer}">
         <div class="mb-3">
             <label for="maGv" class="form-label">Mã Giảng Viên </label>
-            <input type="text" class="form-control" name="maGv" placeholder="Nhập mã giảng viên">
+            <input id="maGv" type="number" class="form-control" name="maGv" placeholder="Nhập mã giảng viên" required>
+            <p th:text="${errorMessage}" style="color: red"></p>
         </div>
+
         <div class="mb-3">
             <label for="hoTen" class="form-label">Họ Và Tên </label>
-            <input type="text" class="form-control" name="hoTen" placeholder="Nhập họ và tên giảng viên">
+            <input id="hoTen" type="text" class="form-control" name="hoTen" placeholder="Nhập họ và tên giảng viên" required>
         </div>
         <div class="mb-3">
             <label for="tenBoMon" class="form-label">Tên Bộ Môn </label>
-            <input type="text" class="form-control" name="tenBoMon" placeholder="Nhập tên bộ môn">
+            <input id="tenBoMon" type="text" class="form-control" name="tenBoMon" placeholder="Nhập tên bộ môn" required>
         </div>
         <div class="mb-3">
             <label for="heSoLuong" class="form-label">Hệ Số Lương </label>
-            <input type="text" class="form-control" name="heSoLuong" placeholder="Nhập hệ số lương">
+            <input id="heSoLuong" type="text" class="form-control" name="heSoLuong" placeholder="Nhập hệ số lương" required>
         </div>
         <center>
             <button type="submit" class="btn btn-primary">Submit</button>

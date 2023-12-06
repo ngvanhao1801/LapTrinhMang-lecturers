@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface LecturerRepository extends JpaRepository<Lecturer,Integer> {
+public interface LecturerRepository extends JpaRepository<Lecturer, Integer> {
 
-	List<Lecturer> findByTenBoMonAndHeSoLuongLessThanEqual(String tenBoMon, int heSoLuong);
+  List<Lecturer> findByTenBoMonAndHeSoLuongLessThanEqual(String tenBoMon, int heSoLuong);
 
 }

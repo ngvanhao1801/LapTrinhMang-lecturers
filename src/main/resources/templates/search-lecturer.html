@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +7,7 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
           crossorigin="anonymous">
     <title>Lecturer Store</title>
-    <script src="https://kit.fontawesome.com/0faddc1af8.js"crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0faddc1af8.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
@@ -27,6 +27,15 @@
         </div>
     </div>
 </nav>
+<br>
+<form action="search" method="GET">
+    <p style = "text-align: center;" >
+        <input type="text" name="tenBoMon" placeholder="Nhập tên bộ môn" required />
+        <input type="number" name="heSoLuong" placeholder="Nhập hệ số lương" required />
+        <button style="background-color: rgba(255,153,0,0.35); border-radius: 10px; width: 100px;" type="submit" class="add-button" >Search</button>
+    </p>
+</form>
+
 <div class="container my-5 col-md-6">
     <table class="table table-bordered table-striped table-hover">
         <thead>
@@ -35,6 +44,7 @@
             <th scope="col">Tên Giảng Viên</th>
             <th scope="col">Tên Bộ Môn</th>
             <th scope="col">Hệ Số Lương</th>
+            <th scope="col">Tình trạng</th>
             <th scope="col">Chức Năng</th>
         </tr>
         </thead>
@@ -44,15 +54,19 @@
             <td th:text="${l.hoTen}"></td>
             <td th:text="${l.tenBoMon}"></td>
             <td th:text="${l.heSoLuong}"></td>
+            <td th:text="${l.heSoLuong >= 5 ? 'Cao' : (3 <= l.heSoLuong && l.heSoLuong<5 ? 'Trung bình' : 'Thấp')}"></td>
             <td>
-                <a style="color:blue" th:href="@{/editLecturer/{id}(id=${l.id})}">
+                <a style="color:blue" th:href="@{/editLecturer/{maGv}(maGv=${l.maGv})}">
                     <i class="fa-solid fa-pen-to-square ms-4"></i>
                 </a>
-                <a style="color: red" th:href="@{/deleteMyList/{id}(id=${l.id})}"
+                <a style="color: red" th:href="@{/deleteMyList/{maGv}(id=${l.maGv})}"
                    onclick="if (!(confirm('Bạn có chắc chắn muốn xóa thông tin giảng viên này?'))) return false">
                     <i class="fa-solid fa-trash-can ms-4"></i>
                 </a>
             </td>
+        </tr>
+        <tr th:if="${lecturer.isEmpty()}">
+            <td colspan="6" style="color: red">Không có kết quả tương ứng</td>
         </tr>
         </tbody>
     </table>
